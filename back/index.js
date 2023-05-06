@@ -7,6 +7,8 @@ import dotenv from "dotenv";
 import path from "path";
 import cors from "cors";
 
+const PORT = process.env.PORT;
+
 dotenv.config();
 
 const connect = async () => {
@@ -34,7 +36,7 @@ app.get("*", (req, res) => {
 app.use("/api/user", UserRoutes);
 app.use("/api/post", PostRoutes);
 
-app.listen(8080, () => {
+app.listen(PORT || 8080, () => {
   connect();
   console.log("Server is running at 8080");
 });
