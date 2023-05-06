@@ -13,7 +13,10 @@ export const LoginUser = async (dispatch, user) => {
   dispatch(LoginStarted());
 
   try {
-    const res = await axios.post("/api/user/login", user);
+    const res = await axios.post(
+      `${import.meta.env.REACT_APP_BACKEND_URL}/api/user/login`,
+      user
+    );
 
     dispatch(LoginSuccessFull(res.data));
 
@@ -41,7 +44,10 @@ export const RegisterUser = async (dispatch, user) => {
   dispatch(RegisterStarted());
 
   try {
-    const res = await axios.post("/api/user/register", user);
+    const res = await axios.post(
+      `${import.meta.env.REACT_APP_BACKEND_URL}/api/user/register`,
+      user
+    );
 
     dispatch(RegisterSuccessFull(res.data));
   } catch (e) {
@@ -66,7 +72,9 @@ export const SearchPost = async (dispatch, SeacrhTerm) => {
 
   try {
     const res = await axios.get(
-      `/api/post/searchpost/${user?._id}?text=${SeacrhTerm}`,
+      `${import.meta.env.REACT_APP_BACKEND_URL}/api/post/searchpost/${
+        user?._id
+      }?text=${SeacrhTerm}`,
       { headers: { token: `Bearer ${user.accessToken}` } }
     );
 

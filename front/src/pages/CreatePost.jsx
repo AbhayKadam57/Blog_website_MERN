@@ -87,7 +87,9 @@ const CreatePost = () => {
 
     if (title && author && image && content) {
       const res = await axios.post(
-        `/api/post/createpost/${userId}`,
+        `${
+          import.meta.env.REACT_APP_BACKEND_URL
+        }/api/post/createpost/${userId}`,
         { userId, title, author, image, content },
         {
           headers: {
@@ -111,7 +113,9 @@ const CreatePost = () => {
 
     if (title && author && image && content) {
       const res = await axios.put(
-        `/api/post/updatepost/${userId}/${postId}`,
+        `${
+          import.meta.env.REACT_APP_BACKEND_URL
+        }/api/post/updatepost/${userId}/${postId}`,
         { userId, title, author, image, content },
         {
           headers: {
@@ -134,7 +138,9 @@ const CreatePost = () => {
     console.log("click");
     try {
       const res = await axios.delete(
-        `/api/post/deletepost/${userId}/${postId}`,
+        `${
+          import.meta.env.REACT_APP_BACKEND_URL
+        }/api/post/deletepost/${userId}/${postId}`,
         {
           headers: {
             token: `Bearer ${accessToken}`,
@@ -160,7 +166,9 @@ const CreatePost = () => {
     try {
       const getPost = async () => {
         const res = await axios.get(
-          `/api/post/getsinglepost/${users._id}/${postId}`
+          `${import.meta.env.REACT_APP_BACKEND_URL}/api/post/getsinglepost/${
+            users._id
+          }/${postId}`
         );
 
         const data = res.data[0];

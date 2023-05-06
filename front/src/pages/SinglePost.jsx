@@ -71,7 +71,9 @@ const SinglePost = () => {
     const getPost = async () => {
       try {
         const res = await axios.get(
-          `/api/post/getsinglepost/${userId}/${postId}`,
+          `${
+            import.meta.env.REACT_APP_BACKEND_URL
+          }/api/post/getsinglepost/${userId}/${postId}`,
           { headers: { token: `${accessToken}` } }
         );
 
