@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import path from "path";
 import cors from "cors";
+import helmet from "helmet";
 
 const PORT = process.env.PORT;
 
