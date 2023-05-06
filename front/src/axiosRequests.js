@@ -13,7 +13,10 @@ export const LoginUser = async (dispatch, user) => {
   dispatch(LoginStarted());
 
   try {
-    const res = await axios.post("/api/user/login", user);
+    const res = await axios.post(
+      "https://blog-website-mern-qncrb583c-abhaykadam57.vercel.app/api/user/login",
+      user
+    );
 
     dispatch(LoginSuccessFull(res.data));
 
