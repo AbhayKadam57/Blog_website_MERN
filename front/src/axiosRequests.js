@@ -45,9 +45,18 @@ export const RegisterUser = async (dispatch, user) => {
 
     dispatch(RegisterSuccessFull(res.data));
   } catch (e) {
-    const error = e.response.data.error.map((e) => {
-      return `${e.msg}`;
-    });
+    if (e.response.data.error) {
+      const error = e.response.data.error?.map((e) => {
+        return `${e.msg}`;
+      });
+
+      dispatch(RegisterFailed(`${error}`));
+    } else {
+      const error = e.response.data;
+
+      dispatch(RegisterFailed(`${error}`));
+    }
+
     dispatch(RegisterFailed(`${error}`));
   }
 };
