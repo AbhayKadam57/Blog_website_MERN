@@ -27,7 +27,7 @@ const Allblogs = () => {
     const getPosts = async () => {
       try {
         const res = await axiosInstance.get(
-          `${import.meta.env.BACKEND_URL}/api/post/getallpost`
+          `${import.meta.env.VITE_REACT_BACKEND_URL}/api/post/getallpost`
         );
 
         setPost(res.data.posts);
