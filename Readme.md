@@ -8,3 +8,7 @@
 
 <p>Live website Link:</p>
 <a href="https://blog-website-with-mern.netlify.app/">https://blog-website-with-mern.netlify.app/</a>
+
+<hr/>
+
+<small>Note:all post and images copyright is belongs to the respective owners of image and post, This properties are used just for expreimental and education purpose. We dont want to used it for any comercial purpose.</small>
