@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { tablet } from "../responsive";
+import axiosInstance from "../../axiosInstance";
 
 const Container = styled.div`
   display: flex;
@@ -86,8 +87,10 @@ const CreatePost = () => {
     e.preventDefault();
 
     if (title && author && image && content) {
-      const res = await axios.post(
-        `${import.meta.env.BACKEND_URL}/api/post/createpost/${userId}`,
+      const res = await axiosInstance.post(
+        `${
+          import.meta.env.VITE_REACT_BACKEND_URL
+        }/api/post/createpost/${userId}`,
         { userId, title, author, image, content },
         {
           headers: {
@@ -110,9 +113,9 @@ const CreatePost = () => {
     e.preventDefault();
 
     if (title && author && image && content) {
-      const res = await axios.put(
+      const res = await axiosInstance.put(
         `${
-          import.meta.env.BACKEND_URL
+          import.meta.env.VITE_REACT_BACKEND_URL
         }/api/post/updatepost/${userId}/${postId}`,
         { userId, title, author, image, content },
         {
@@ -135,9 +138,9 @@ const CreatePost = () => {
   const handleDelete = async () => {
     console.log("click");
     try {
-      const res = await axios.delete(
+      const res = await axiosInstance.delete(
         `${
-          import.meta.env.BACKEND_URL
+          import.meta.env.VITE_REACT_BACKEND_URL
         }/api/post/deletepost/${userId}/${postId}`,
         {
           headers: {
@@ -163,8 +166,8 @@ const CreatePost = () => {
 
     try {
       const getPost = async () => {
-        const res = await axios.get(
-          `${import.meta.env.BACKEND_URL}/api/post/getsinglepost/${
+        const res = await axiosInstance.get(
+          `${import.meta.env.VITE_REACT_BACKEND_URL}/api/post/getsinglepost/${
             users._id
           }/${postId}`
         );

@@ -8,13 +8,14 @@ import {
   RegisterSuccessFull,
   searchingPost,
 } from "./redux/userSlice";
+import axiosInstance from "../axiosInstance";
 
 export const LoginUser = async (dispatch, user) => {
   dispatch(LoginStarted());
 
   try {
-    const res = await axios.post(
-      `${import.meta.env.BACKEND_URL}/api/user/login`,
+    const res = await axiosInstance.post(
+      `${import.meta.env.VITE_REACT_BACKEND_URL}/api/user/login`,
       user
     );
 
@@ -44,8 +45,8 @@ export const RegisterUser = async (dispatch, user) => {
   dispatch(RegisterStarted());
 
   try {
-    const res = await axios.post(
-      `${import.meta.env.BACKEND_URL}/api/user/register`,
+    const res = await axiosInstance.post(
+      `${import.meta.env.VITE_REACT_BACKEND_URL}/api/user/register`,
       user
     );
 
@@ -71,8 +72,8 @@ export const SearchPost = async (dispatch, SeacrhTerm) => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   try {
-    const res = await axios.get(
-      `${import.meta.env.BACKEND_URL}/api/post/searchpost/${
+    const res = await axiosInstance.get(
+      `${import.meta.env.VITE_REACT_BACKEND_URL}/api/post/searchpost/${
         user?._id
       }?text=${SeacrhTerm}`,
       { headers: { token: `Bearer ${user.accessToken}` } }

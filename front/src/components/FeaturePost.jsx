@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Post from "./Post";
 import axios from "axios";
 import { tablet } from "../responsive";
+import axiosInstance from "../../axiosInstance";
 
 const Container = styled.div`
   display: grid;
@@ -23,8 +24,8 @@ const FeaturePost = () => {
 
     const getPosts = async () => {
       try {
-        const res = await axios.get(
-          `${import.meta.env.BACKEND_URL}/api/post/getallpost`
+        const res = await axiosInstance.get(
+          `${import.meta.env.VITE_REACT_BACKEND_URL}/api/post/getallpost`
         );
 
         setPost(res.data.posts);

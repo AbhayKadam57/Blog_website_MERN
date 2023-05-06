@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
+import axiosInstance from "../../axiosInstance";
 
 const Container = styled.div`
   display: flex;
@@ -70,9 +71,9 @@ const SinglePost = () => {
 
     const getPost = async () => {
       try {
-        const res = await axios.get(
+        const res = await axiosInstance.get(
           `${
-            import.meta.env.BACKEND_URL
+            import.meta.env.VITE_REACT_BACKEND_URL
           }/api/post/getsinglepost/${userId}/${postId}`,
           { headers: { token: `${accessToken}` } }
         );

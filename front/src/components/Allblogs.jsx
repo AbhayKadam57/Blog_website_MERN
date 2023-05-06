@@ -4,6 +4,7 @@ import SmallPost from "./SmallPost";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { tablet } from "../responsive";
+import axiosInstance from "../../axiosInstance";
 
 const Container = styled.div`
   display: flex;
@@ -25,7 +26,7 @@ const Allblogs = () => {
 
     const getPosts = async () => {
       try {
-        const res = await axios.get(
+        const res = await axiosInstance.get(
           `${import.meta.env.BACKEND_URL}/api/post/getallpost`
         );
 
