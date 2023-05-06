@@ -40,13 +40,13 @@ app.use(
 );
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(path.join("../front", "dist")));
+// app.use(express.static(path.join("../front", "dist")));
 
-app.get("*", (req, res) => {
-  const PathName = path.resolve("../front", "dist", "index.html");
+// app.get("*", (req, res) => {
+//   const PathName = path.resolve("../front", "dist", "index.html");
 
-  res.sendFile(PathName);
-});
+//   res.sendFile(PathName);
+// });
 
 app.use("/api/user", UserRoutes);
 app.use("/api/post", PostRoutes);
