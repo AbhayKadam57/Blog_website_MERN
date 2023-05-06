@@ -28,14 +28,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join("../front", "dist")));
 
+app.use("/api/user", UserRoutes);
+app.use("/api/post", PostRoutes);
+
 app.get("*", (req, res) => {
   const PathName = path.resolve("../front", "dist", "index.html");
 
   res.sendFile(PathName);
 });
-
-app.use("/api/user", UserRoutes);
-app.use("/api/post", PostRoutes);
 
 app.listen(PORT || 8080, () => {
   connect();
