@@ -72,7 +72,7 @@ const SinglePost = () => {
       try {
         const res = await axios.get(
           `${
-            import.meta.env.REACT_APP_BACKEND_URL
+            import.meta.env.BACKEND_URL
           }/api/post/getsinglepost/${userId}/${postId}`,
           { headers: { token: `${accessToken}` } }
         );
