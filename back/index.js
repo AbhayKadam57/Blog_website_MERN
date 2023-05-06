@@ -20,7 +20,14 @@ const connect = async () => {
 };
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://blog-website-mern-three.vercel.app/",
+      "http://localhost:8080/",
+    ],
+  })
+);
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join("../front", "dist")));
