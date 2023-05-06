@@ -6,7 +6,6 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import path from "path";
 import cors from "cors";
-import helmet from "helmet";
 
 const PORT = process.env.PORT;
 
@@ -24,29 +23,16 @@ const connect = async () => {
 
 const app = express();
 app.use(cors());
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'"],
-        styleSrc: ["'self'", "'unsafe-inline'"],
-        imgSrc: ["'self'"],
-        connectSrc: ["'self'"],
-        fontSrc: ["'self'"],
-      },
-    },
-  })
-);
+
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(express.static(path.join("../front", "dist")));
+app.use(express.static(path.join("../front", "dist")));
 
-// app.get("*", (req, res) => {
-//   const PathName = path.resolve("../front", "dist", "index.html");
+app.get("*", (req, res) => {
+  const PathName = path.resolve("../front", "dist", "index.html");
 
-//   res.sendFile(PathName);
-// });
+  res.sendFile(PathName);
+});
 
 app.use("/api/user", UserRoutes);
 app.use("/api/post", PostRoutes);
